@@ -22,7 +22,7 @@ signupRouter.post('/',async(req,res)=>{
             bcrypt.hash(password, 6, async function(err, hash) {
               // Store hash in your password DB.
             if(hash){
-              const user=new User_Model({email,password:hash})
+              const user=new User_Model({name,email,password:hash})
               await user.save()
               res.status(201).send({"msg":"Signup successful", "signup":true, "userExist":false});
             }
